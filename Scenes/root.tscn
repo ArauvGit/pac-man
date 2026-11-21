@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cf5xhe5ye6wi8"]
+
+[ext_resource type="PackedScene" uid="uid://s0wkjfuwqnfl" path="res://Scenes/player.tscn" id="1_i04dx"]
+
+[node name="root" type="Node2D" unique_id=1689654208]
+
+[node name="Player" parent="." unique_id=364220023 instance=ExtResource("1_i04dx")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1916646181]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1689771104]
+offset_right = 40.0
+offset_bottom = 40.0
