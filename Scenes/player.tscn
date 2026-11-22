@@ -60,7 +60,7 @@ shape = SubResource("CircleShape2D_b68tq")
 shape = SubResource("CircleShape2D_sdnvj")
 
 [node name="tile collision detector" type="RayCast2D" parent="." unique_id=570244265]
-target_position = Vector2(16, 0)
+target_position = Vector2(16, -8)
 
 [node name="movement" type="Node" parent="." unique_id=2042832686 node_paths=PackedStringArray("sprite", "tile_collision_detector")]
 script = ExtResource("3_6t5aa")

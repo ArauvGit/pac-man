@@ -52,27 +52,31 @@ func _input(event: InputEvent) -> void:
 			snap_tile()
 			state = States.LEFT 
 			state_machine()
+			if tile_collision_detector.target_position != Vector2(-16, character_peak):
 		var x when x.is_action_pressed("move_right"):
-			tile_collision_detector.target_position = Vector2(16, character_peak)
-			collision_test_running = true
-			await turn
-			snap_tile()
-			state = States.RIGHT
-			state_machine()
+			if tile_collision_detector.target_position != Vector2(16, character_peak): 
+				tile_collision_detector.target_position = Vector2(16, character_peak)
+				collision_test_running = true
+				await turn
+				snap_tile()
+				state = States.RIGHT
+				state_machine() 
 		var x when x.is_action_pressed("move_up"):
-			tile_collision_detector.target_position = Vector2(character_back, -16)
-			collision_test_running = true
-			await turn
-			snap_tile()
-			state = States.UP
-			state_machine()
+			if tile_collision_detector.target_position != Vector2(character_back, -16):
+				tile_collision_detector.target_position = Vector2(character_back, -16)
+				collision_test_running = true
+				await turn
+				snap_tile()
+				state = States.UP
+				state_machine()
 		var x when x.is_action_pressed("move_down"):
-			tile_collision_detector.target_position = Vector2(character_back, 16)
-			collision_test_running = true
-			await turn
-			snap_tile()
-			state = States.DOWN
-			state_machine()
+			if tile_collision_detector.target_position != Vector2(character_back, 16):
+				tile_collision_detector.target_position = Vector2(character_back, 16)
+				collision_test_running = true
+				await turn
+				snap_tile()
+				state = States.DOWN
+				state_machine()
 func state_machine(): 
 	match state: 
 		States.LEFT: 
