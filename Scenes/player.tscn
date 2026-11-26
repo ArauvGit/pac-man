@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cgip033fhd6vr" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Script" uid="uid://ciu2j6ckpy0sh" path="res://Scripts/movement.gd" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://cv52m3hyoh5v7" path="res://Scripts/collection.gd" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://dx8dabhlpxh8h" path="res://Scripts/input.gd" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("1_onrkg")
@@ -74,3 +75,11 @@ tile_collision_detector = NodePath("../tile collision detector")
 [node name="collecting" type="Node" parent="." unique_id=582205395 node_paths=PackedStringArray("detector")]
 script = ExtResource("3_vgqql")
 detector = NodePath("../enemy detector")
+
+[node name="input" type="Node" parent="." unique_id=1916719099]
+script = ExtResource("5_fkybt")
+
+[connection signal="down" from="input" to="movement" method="down"]
+[connection signal="left" from="input" to="movement" method="left"]
+[connection signal="right" from="input" to="movement" method="right"]
+[connection signal="up" from="input" to="movement" method="up"]

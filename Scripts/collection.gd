@@ -1,11 +1,10 @@
 extends Node
-var player: CharacterBody2D = get_parent()
-var tiles: TileMapLayer
+@onready var player: CharacterBody2D = get_parent()
+@onready var tiles: TileMapLayer = player.collect_tiles
 @export var detector: Area2D
 
 func _ready() -> void: 
-	player = get_parent() 
-	tiles = player.collect_tiles
+	pass
 func _physics_process(delta: float) -> void:
 	gain_points()
 
@@ -16,5 +15,5 @@ func gain_points():
 		var tile_data: TileData = tiles.get_cell_tile_data(tile_pos) 
 		if tile_data:
 			if tile_data.get_custom_data("Points"): 
-				player.update_score.emit(1)
+				player.update_score.emit(tile_data.get_custom_data("Points"))
 				tiles.erase_cell(tile_pos)
