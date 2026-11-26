@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://s0wkjfuwqnfl"]
 
 [ext_resource type="Texture2D" uid="uid://brc61gd0ebmp7" path="res://Sprites/pac man.png" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://cgip033fhd6vr" path="res://Scripts/player.gd" id="1_vgqql"]
 [ext_resource type="Script" uid="uid://ciu2j6ckpy0sh" path="res://Scripts/movement.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cv52m3hyoh5v7" path="res://Scripts/collection.gd" id="3_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("1_onrkg")
@@ -45,6 +47,7 @@ animations = [{
 radius = 7.0
 
 [node name="Player" type="CharacterBody2D" unique_id=364220023]
+script = ExtResource("1_vgqql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1972017683]
 sprite_frames = SubResource("SpriteFrames_sdnvj")
@@ -55,6 +58,7 @@ scale = Vector2(0.7, 0.73)
 shape = SubResource("CircleShape2D_b68tq")
 
 [node name="enemy detector" type="Area2D" parent="." unique_id=190534861]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy detector" unique_id=1916609043]
 shape = SubResource("CircleShape2D_sdnvj")
@@ -66,3 +70,7 @@ target_position = Vector2(16, -8)
 script = ExtResource("3_6t5aa")
 sprite = NodePath("../AnimatedSprite2D")
 tile_collision_detector = NodePath("../tile collision detector")
+
+[node name="collecting" type="Node" parent="." unique_id=582205395 node_paths=PackedStringArray("detector")]
+script = ExtResource("3_vgqql")
+detector = NodePath("../enemy detector")

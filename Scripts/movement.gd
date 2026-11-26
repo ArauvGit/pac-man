@@ -4,7 +4,7 @@ var player: CharacterBody2D = get_parent()
 var speed = 100 
 @export var sprite: AnimatedSprite2D  
 @export var tile_collision_detector: RayCast2D
-var tiles: TileMapLayer = Backgrounds.get_child(1)
+var tiles: TileMapLayer
 var velocity = Vector2(0, 0)
 var collision_test_running: bool = false
 
@@ -17,6 +17,7 @@ enum States {
 var state = States.LEFT
 func _ready() -> void:
 	player = get_parent()
+	tiles = player.environment_tiles
 
 
 func _physics_process(delta: float) -> void:
@@ -46,13 +47,13 @@ func _input(event: InputEvent) -> void:
 	var character_peak = -8 * player.velocity.normalized().y
 	match event: 
 		var x when x.is_action_pressed("move_left"): 
-			tile_collision_detector.target_position = Vector2(-16, character_peak) 
-			collision_test_running = true
-			await turn
-			snap_tile()
-			state = States.LEFT 
-			state_machine()
 			if tile_collision_detector.target_position != Vector2(-16, character_peak):
+				tile_collision_detector.target_position = Vector2(-16, character_peak) 
+				collision_test_running = true
+				await turn
+				snap_tile()
+				state = States.LEFT 
+				state_machine()
 		var x when x.is_action_pressed("move_right"):
 			if tile_collision_detector.target_position != Vector2(16, character_peak): 
 				tile_collision_detector.target_position = Vector2(16, character_peak)
