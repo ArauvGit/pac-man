@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dic8vaunktw10"]
+
+[ext_resource type="Script" uid="uid://ciu2j6ckpy0sh" path="res://Scripts/movement.gd" id="1_er76d"]
+
+[node name="movement" type="Node" unique_id=1216170425 node_paths=PackedStringArray("sprite", "tile_collision_detector")]
+script = ExtResource("1_er76d")
+sprite = NodePath("")
+tile_collision_detector = NodePath("")

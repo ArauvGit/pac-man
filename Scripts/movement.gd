@@ -1,12 +1,13 @@
 extends Node
 signal turn
+signal position_update
 
 var speed: int = 100
 var character_back: float = 0
 var character_peak: float = 0
 
 @onready var player: CharacterBody2D = get_parent()
-@onready var tiles: TileMapLayer = player.collect_tiles
+@onready var tiles: TileMapLayer = player.environment_tiles
 
 @export var sprite: AnimatedSprite2D  
 @export var tile_collision_detector: RayCast2D
@@ -38,6 +39,7 @@ func snap_tile():
 	while player.global_position != tile_global_pos: 
 		player.global_position.x = move_toward(player.global_position.x, tile_global_pos.x, 0.017)
 		player.global_position.y = move_toward(player.global_position.y, tile_global_pos.y, 0.017)
+
 
 		
 func test_collision(): 
